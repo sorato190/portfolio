@@ -19,14 +19,11 @@ export default function RootLayout({
     <html lang="jp">
       <body className="bg-stone-100">
         <SideNav />
-        <div className="p-5 sm:!pl-[260px] text-center" id="content">
-          {/* mx-auto max-w-screen-2xl h-full */}
-          {children}
+        <div className="p-5 sm:!pl-[410px] flex flex-wrap items-center justify-center" id="content">
+          <div className="mx-auto max-w-screen-2xl px-4 md:px-8 lg:mt-44">
+            {children}
+          </div>
         </div>
-        {/* <section className="bg-slate-200 h-screen w-screen">
-          <main className="mx-auto max-w-screen-2xl flex flex-col items-center justify-between">
-          </main>
-        </section> */}
       </body>
     </html>
   )

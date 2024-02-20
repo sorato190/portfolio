@@ -1,3 +1,6 @@
+'use client'
+import { useState } from "react"
+
 const skillsLogo = [
   { "path": "python-logo.svg", "width": 18, "height": 16 },
   { "path": "django-logo.svg", "width": 18, "height": 16 },
@@ -29,9 +32,30 @@ const qualification = [
 
 export default function Profile() {
 
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const siteImageList = [
+    { path: '/profile/site/household.jpg', url: 'https://household.sumisora.tech', title: '家計簿アプリ' },
+    { path: '/profile/site/msc-bellissima.jpg', url: 'https://bellissima.sumisora.tech', title: 'クルーズ旅行記' },
+  ]
+  const prevSlide = () => {
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? siteImageList.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const nextSlide = () => {
+    const isLastSlide = currentIndex === siteImageList.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  }
+
+  const goToSlide = (slideIndex: number) => {
+    setCurrentIndex(slideIndex)
+  }
+
   const Profile = () => {
     return (
-      < div className="md:mx-1 grid grid-cols-1 gap-1 sm:grid-cols-2" >
+      < div id='profile' className="md:mx-1 grid grid-cols-1 gap-1 sm:grid-cols-2" >
         <div className="flex justify-center items-center">
           <img
             src="/profile/profile-ozaki.jpg"
@@ -75,7 +99,7 @@ export default function Profile() {
 
   const Skills = () => {
     return (
-      <div className="flex justify-center items-center">
+      <div id='skills' className="flex justify-center items-center">
         <div className="block w-full p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
           <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Skills
@@ -83,7 +107,7 @@ export default function Profile() {
           < div className="md:mx-10 grid grid-cols-2 gap-4 lg:grid-cols-3" >
             {skillsLogo.map(logo => {
               return (
-                <div className="flex justify-center p-2 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <div key={logo.path} className="flex justify-center p-2 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                   <img key={logo.path} src={`/profile/skills/${logo.path}`} alt="Logo" className={`w-${logo.width} h-${logo.height}`} />
                 </div>
               )
@@ -96,7 +120,7 @@ export default function Profile() {
 
   const Qualification = () => {
     return (
-      <div className="flex justify-center items-center">
+      <div id='qualification' className="flex justify-center items-center">
         <div className="block w-full p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
           <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Qualification
@@ -104,7 +128,7 @@ export default function Profile() {
           < div className="md:mx-10 grid grid-cols-2 gap-4 sm:grid-cols-3" >
             {qualification.map((item) => {
               return (
-                <div className="font-normal text-lg lg:text-xl text-gray-700 dark:text-gray-400">
+                <div key={item} className="font-normal text-lg lg:text-xl text-gray-700 dark:text-gray-400">
                   {item}
                 </div>
               )
@@ -115,6 +139,57 @@ export default function Profile() {
     )
   }
 
+  const Site = () => {
+    return (
+      <>
+        {/* <div className="max-w-[1000px] h-[380px] w-full m-auto py-2 px-4 relative"> */}
+        <div className="block w-full p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Site
+          </h5>
+          < div className="relative md:mx-1 grid grid-cols-1 group" >
+            <div className="relative w-full h-hull rounded-2xl bg-center bg-cover ">
+              <img
+                src={siteImageList[currentIndex].path}
+                // src="/profile/site/msc-bellissima.jpg"
+                loading="lazy"
+                alt="Photo by Sorato Ozaki"
+                className="w-full h-auto lg:h-80 rounded-2xl object-cover object-center duration-500"
+              />
+            </div>
+            <a href={siteImageList[currentIndex].url} target="_blank" rel="noopener noreferrer" className='absolute top-[10%] -translate-x-0 translate-y-[-20%] right-5 text-2xl'>
+              {siteImageList[currentIndex].title}
+            </a>
+            {/* Left Arrow */}
+            <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
+              <button onClick={prevSlide}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+              </button>
+
+            </div>
+            {/* Right Arrow */}
+            <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
+              <button onClick={nextSlide}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+              </button>
+            </div>
+            <div className="flex top-4 justify-center py-2">
+              {siteImageList.map((site, slideIndex) => {
+                return (
+                  <div key={slideIndex} onClick={() => { goToSlide(slideIndex) }} className='rounded-md w-8 h-1 bg-gray-400 mx-1 cursor-pointer'></div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </>
+    )
+  }
+
   return (
     <>
       <Profile />
@@ -122,6 +197,8 @@ export default function Profile() {
       <Qualification />
       <hr className="my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
       <Skills />
+      <hr className="my-12 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
+      <Site />
     </>
   )
 }

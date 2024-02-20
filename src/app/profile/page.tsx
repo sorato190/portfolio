@@ -88,7 +88,7 @@ export default function Profile() {
                 <div className="flex justify-between">
                   <span className="font-semibold text-lg">休日の過ごし方</span>
                 </div>
-                <p className="text-gray-700">YouTube : Kevin's English Roomにハマってます</p>
+                <p className="text-gray-700">{`YouTube : Kevin's English Roomにハマってます`}</p>
                 <p className="text-gray-700">ゲーム(Switch) : 大学時代の友人とオンラインで桃鉄</p>
                 <p className="text-gray-700">お出掛け : 名古屋、山口、金沢、静岡など車で旅行</p>
               </li>

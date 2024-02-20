@@ -34,8 +34,10 @@ export default function Profile() {
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const siteImageList = [
-    { path: '/profile/site/household.jpg', url: 'https://household.sumisora.tech', title: '家計簿アプリ' },
+    { path: '/profile/site/introduce.jpg', url: 'https://main.dbz2q5mr81v86.amplifyapp.com/', title: '自己紹介サイト作ってみた' },
     { path: '/profile/site/msc-bellissima.jpg', url: 'https://bellissima.sumisora.tech', title: 'クルーズ旅行記' },
+    { path: '/profile/site/household.jpg', url: 'https://household.sumisora.tech', title: '家計簿アプリ' },
+
   ]
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
@@ -157,7 +159,8 @@ export default function Profile() {
                 className="w-full h-auto lg:h-80 rounded-2xl object-cover object-center duration-500"
               />
             </div>
-            <a href={siteImageList[currentIndex].url} target="_blank" rel="noopener noreferrer" className='absolute top-[10%] -translate-x-0 translate-y-[-20%] right-5 text-2xl'>
+            <a href={siteImageList[currentIndex].url} target="_blank" rel="noopener noreferrer"
+              className='bg-slate-200 bg-opacity-80 p-3 rounded-md hover:scale-110 duration-300 underline absolute top-[10%] -translate-x-0 translate-y-[-20%] right-10 text-xl lg:text-3xl'>
               {siteImageList[currentIndex].title}
             </a>
             {/* Left Arrow */}

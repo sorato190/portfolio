@@ -18,9 +18,15 @@ export default function Profile() {
           <ul className="rounded-lg leading-relaxed max-w-lg">
             <li className="px-6 py-2">
               <div className="flex justify-between">
-                <span className="font-semibold text-lg">出身地</span>
+                <span className="font-semibold text-lg">出身</span>
               </div>
               <p className="text-gray-700 text-md">愛媛県 四国中央市</p>
+            </li>
+            <li className="px-6 py-2">
+              <div className="flex justify-between">
+                <span className="font-semibold text-lg">大学</span>
+              </div>
+              <p className="text-gray-700 text-md">静岡県 浜松市</p>
             </li>
             <li className="px-6 py-2">
               <div className="flex justify-between">
@@ -32,9 +38,10 @@ export default function Profile() {
               <div className="flex justify-between">
                 <span className="font-semibold text-lg">休日の過ごし方</span>
               </div>
-              <p className="text-gray-700">{`YouTube : Kevin's English Roomにハマってます`}</p>
-              <p className="text-gray-700">ゲーム(Switch) : 大学時代の友人とオンラインで桃鉄</p>
-              <p className="text-gray-700">お出掛け : 名古屋、山口、金沢、静岡など車で旅行</p>
+              <p className="text-gray-700">YouTube / ゲーム(Switch) / ドライブ / バスケ</p>
+              <p className="text-gray-700">ドライブは下道で道の駅を巡りながらのんびりドライブするのが好きです。</p>
+              <p className="text-gray-700">2023年は下関、能登半島、静岡など車で旅行に行きました。</p>
+              <p className="text-gray-700">2024年はハウステンボスに行きたいと思っています。</p>
             </li>
           </ul>
         </div>

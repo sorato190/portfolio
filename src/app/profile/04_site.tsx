@@ -2,7 +2,7 @@
 import { useState } from "react"
 
 const siteImageList = [
-  { path: '/profile/site/introduce.jpg', url: 'https://main.dbz2q5mr81v86.amplifyapp.com/', title: '自己紹介サイト作ってみた' },
+  { path: '/profile/site/introduce.jpg', url: 'https://main.dbz2q5mr81v86.amplifyapp.com/', title: '自己紹介ページ作ってみた' },
   { path: '/profile/site/msc-bellissima.jpg', url: 'https://bellissima.sumisora.tech', title: 'クルーズ旅行記' },
   { path: '/profile/site/household.jpg', url: 'https://household.sumisora.tech', title: '家計簿アプリ' },
 
@@ -31,7 +31,7 @@ export default function Site() {
   return (
     <>
       {/* <div className="max-w-[1000px] h-[380px] w-full m-auto py-2 px-4 relative"> */}
-      <div className="block w-full p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-300 dark:border-gray-700 dark:hover:bg-gray-100">
+      <div className="block w-full p-6 border border-gray-200 rounded-lg shadow  dark:bg-gray-300 dark:border-gray-700 dark:">
         <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           Site
         </h5>

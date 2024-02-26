@@ -25,7 +25,7 @@ export default function SideNav() {
           return (
             <li key={nav.content} className="relative">
               <a href={nav.href} className="flex flex-row items-center h-16 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                <span className="inline-flex items-center justify-center h-16 w-16 text-lg text-gray-400"><i className="bx bx-home"></i></span>
+                <span className="inline-flex items-center justify-center h-16 w-16 text-lg text-gray-600"><i className="bx bx-home"></i></span>
                 <span className="text-2xl">{nav.content}</span>
               </a>
             </li>
@@ -40,7 +40,7 @@ export default function SideNav() {
       {/* <!-- Sidenav --> */}
       <nav
         id='sidenav-1'
-        className="hidden z-50 sm:block fixed left-0 top-0 z-[1035] h-screen w-80 -translate-x-full overflow-hidden bg-gray-100 shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
+        className="hidden z-50 sm:block fixed left-0 top-0 z-[1035] h-screen w-80 -translate-x-full overflow-hidden bg-browndark shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
         data-te-sidenav-init
         data-te-sidenav-hidden="false"
         data-te-sidenav-mode="side"

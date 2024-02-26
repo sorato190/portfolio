@@ -15,14 +15,14 @@ export default function Qualification() {
 
   return (
     <div id='qualification' className="flex justify-center items-center">
-      <div className="block w-full p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-300 dark:border-gray-700 dark:hover:bg-gray-100">
+      <div className="block w-full p-6 border border-gray-200 rounded-lg shadow dark:bg-gray-300 dark:border-gray-700">
         <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           Qualification
         </h5>
         < div className="md:mx-10 grid grid-cols-2 gap-4 sm:grid-cols-3" >
           {qualification.map((item) => {
             return (
-              <div key={item} className="font-normal text-lg lg:text-xl text-gray-700 dark:text-gray-400">
+              <div key={item} className="font-normal text-lg lg:text-xl text-gray-700 dark:text-gray-600">
                 {item}
               </div>
             )

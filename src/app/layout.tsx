@@ -17,7 +17,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="jp" className='scroll-smooth'>
-      <body className="bg-stone-100">
+      {/* <body className="bg-stone-100"> */}
+      <body className="bg-brown">
         <SideNav />
         <div className="p-5 sm:!pl-[350px] flex flex-wrap items-center justify-center" id="content">
           <div className="mx-auto max-w-screen-2xl px-4 md:px-8 lg:mt-44">

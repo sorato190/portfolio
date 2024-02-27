@@ -5,7 +5,6 @@ const siteImageList = [
   { path: '/profile/site/introduce.jpg', url: 'https://main.dbz2q5mr81v86.amplifyapp.com/', title: '自己紹介ページ作ってみた' },
   { path: '/profile/site/msc-bellissima.jpg', url: 'https://bellissima.sumisora.tech', title: 'クルーズ旅行記' },
   { path: '/profile/site/household.jpg', url: 'https://household.sumisora.tech', title: '家計簿アプリ' },
-
 ]
 
 export default function Site() {
@@ -40,10 +39,9 @@ export default function Site() {
           <div className="relative w-full h-hull rounded-2xl bg-center bg-cover ">
             <img
               src={siteImageList[currentIndex].path}
-              // src="/profile/site/msc-bellissima.jpg"
               loading="lazy"
               alt="Photo by Sorato Ozaki"
-              className="w-full h-auto lg:h-80 rounded-2xl object-cover object-center duration-500"
+              className="w-full h-auto lg:h-80 rounded-2xl object-cover object-center duration-700"
             />
           </div>
           {/* Site link */}
@@ -68,10 +66,15 @@ export default function Site() {
               </svg>
             </button>
           </div>
+          {/* Slide index bar */}
           <div className="flex top-4 justify-center py-2">
             {siteImageList.map((site, slideIndex) => {
               return (
-                <div key={slideIndex} onClick={() => { goToSlide(slideIndex) }} className='rounded-md w-8 h-1 bg-gray-400 mx-1 cursor-pointer'></div>
+                <div
+                  key={slideIndex}
+                  onClick={() => { goToSlide(slideIndex) }}
+                  className={`rounded-md w-8 h-1 bg-gray-400 mx-1 cursor-pointer ${slideIndex === currentIndex ? 'bg-blue-400' : ''}`}>
+                </div>
               )
             })}
           </div>

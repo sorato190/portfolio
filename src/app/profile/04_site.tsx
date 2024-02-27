@@ -39,7 +39,7 @@ export default function Site() {
           <div className="relative w-full h-hull rounded-2xl bg-center bg-cover ">
             <img
               src={siteImageList[currentIndex].path}
-              loading="lazy"
+              // loading="lazy"
               alt="Photo by Sorato Ozaki"
               className="w-full h-auto lg:h-80 rounded-2xl object-cover object-center duration-700"
             />

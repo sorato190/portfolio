@@ -26,7 +26,13 @@ export default function Skills() {
           {skillsLogo.map(logo => {
             return (
               <div key={logo.path} className="flex justify-center p-2 border border-gray-200 rounded-lg shadow dark:bg-gray-300 dark:border-gray-700 dark:">
-                <img key={logo.path} src={`/profile/skills/${logo.path}`} alt="Logo" loading="lazy" className={`w-${logo.width} h-${logo.height}`} />
+                <img
+                  key={logo.path}
+                  src={`/profile/skills/${logo.path}`}
+                  alt="Logo"
+                  // loading="lazy"
+                  className={`w-${logo.width} h-${logo.height}`}
+                />
               </div>
             )
           })}

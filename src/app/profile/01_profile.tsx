@@ -5,7 +5,7 @@ export default function Profile() {
       <div className="flex justify-center items-center">
         <img
           src="/profile/profile-ozaki.jpg"
-          loading="lazy"
+          // loading="lazy"
           alt="Photo by Sorato Ozaki"
           className="w-48 h-48 md:w-64 md:h-64 lg:w-96 lg:h-96 rounded-full object-cover object-center"
         />

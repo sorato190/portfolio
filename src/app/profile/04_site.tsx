@@ -31,7 +31,7 @@ export default function Site() {
     <>
       {/* <div className="max-w-[1000px] h-[380px] w-full m-auto py-2 px-4 relative"> */}
       <div className="block w-full p-6 border border-gray-200 rounded-lg shadow  dark:bg-gray-300 dark:border-gray-700 dark:">
-        <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h5 className="mb-4 text-2xl lg:text-3xl font-bold tracking-tight text-gray-900">
           Site
         </h5>
         < div className="relative md:mx-1 grid grid-cols-1 group" >
@@ -41,7 +41,7 @@ export default function Site() {
               src={siteImageList[currentIndex].path}
               // loading="lazy"
               alt="Photo by Sorato Ozaki"
-              className="w-full h-auto lg:h-80 rounded-2xl object-cover object-center duration-700"
+              className="w-full h-auto lg:h-[500px] rounded-2xl object-cover object-center duration-700"
             />
           </div>
           {/* Site link */}

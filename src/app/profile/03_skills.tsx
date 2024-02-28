@@ -19,7 +19,7 @@ export default function Skills() {
   return (
     <div id='skills' className="flex justify-center items-center">
       <div className="block w-full p-6 border border-gray-200 rounded-lg shadow dark:bg-gray-300 dark:border-gray-700 dark:">
-        <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h5 className="mb-4 text-2xl lg:text-3xl font-bold tracking-tight text-gray-900">
           Skills
         </h5>
         < div className="md:mx-10 grid grid-cols-2 gap-4 lg:grid-cols-3" >

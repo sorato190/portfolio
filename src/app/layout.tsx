@@ -16,16 +16,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="jp" className='scroll-smooth'>
+    <html lang="jp" className="scroll-smooth">
       {/* <body className="bg-stone-100"> */}
-      <body className="bg-brown dark:bg-gray-300">
+      <body className="bg-brown dark:bg-gray-300 flex h-screen">
         <SideNav />
-        <div className="p-5 sm:!pl-[350px] flex flex-wrap items-center justify-center" id="content">
-          <div className="mx-auto max-w-screen-2xl px-4 md:px-8 lg:mt-44">
+        <div
+          className="sm:pl-56 p-2 flex flex-wrap items-center justify-center"
+          id="content"
+        >
+          <div className="flex-1 overflow-auto px-4 md:px-2 lg:mt-16">
             {children}
           </div>
         </div>
       </body>
     </html>
-  )
+  );
 }

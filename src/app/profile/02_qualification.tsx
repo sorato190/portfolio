@@ -9,26 +9,30 @@ const qualification = [
   "LinuC-2",
   "Kubernetes and Cloud Native Associate",
   "Vmware認定技術者(VCP-DCV)",
-]
+  "Zabbix認定スペシャリスト",
+  "AWSソリューションアーキテクト",
+];
 
 export default function Qualification() {
-
   return (
-    <div id='qualification' className="flex justify-center items-center">
+    <div id="qualification" className="flex justify-center items-center">
       <div className="block w-full p-6 border border-gray-200 rounded-lg shadow dark:bg-gray-300 dark:border-gray-700">
         <h5 className="mb-4 text-2xl lg:text-3xl font-bold tracking-tight text-gray-900">
           Qualification
         </h5>
-        < div className="md:mx-10 grid grid-cols-2 gap-4 sm:grid-cols-3" >
+        <div className="md:mx-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {qualification.map((item) => {
             return (
-              <div key={item} className="font-normal text-lg lg:text-xl text-gray-700 dark:text-gray-600">
+              <div
+                key={item}
+                className="font-normal text-gray-700 dark:text-gray-600"
+              >
                 {item}
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </div>
-  )
+  );
 }

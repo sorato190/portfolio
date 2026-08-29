@@ -1,108 +1,115 @@
 "use client";
-import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const navList = [
+  { href: "#profile", content: "Profile" },
+  { href: "#qualification", content: "Qualification" },
+  { href: "#skills", content: "Skills" },
+  { href: "#site", content: "Site" },
+];
 
 export default function SideNav() {
   const [openMenu, setOpenMenu] = useState(false);
-  const currPath = usePathname();
-  const isActiveLink = (path: string) => {
-    return currPath === path ? "text-indigo-500" : "text-gray-900";
-  };
-  const handleMenuOpen = () => {
-    setOpenMenu(!openMenu);
-  };
+  const [activeId, setActiveId] = useState("profile");
 
-  const navList = [
-    { href: "#", content: "Profile" },
-    { href: "#qualification", content: "Qualification" },
-    { href: "#skills", content: "Skills" },
-  ];
+  useEffect(() => {
+    const sections = navList
+      .map((nav) => document.getElementById(nav.href.slice(1)))
+      .filter((el): el is HTMLElement => el !== null);
 
-  const NavListElement = () => {
-    return (
-      <ul
-        className="relative m-0 list-none px-[0.2rem] mt-10"
-        data-te-sidenav-menu-ref
-      >
-        {navList.map((nav) => {
-          return (
-            <li key={nav.content} className="relative">
-              <a
-                href={nav.href}
-                className="flex flex-row items-center h-16 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 dark:text-white hover:text-gray-800 dark:hover:text-gray-800"
-              >
-                <span className="inline-flex items-center justify-center h-16 w-16 text-lg text-gray-600 dark:text-white ">
-                  <i className="bx bx-home"></i>
-                </span>
-                <span className="text-2xl">{nav.content}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
     );
-  };
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  const isActive = (href: string) => href.slice(1) === activeId;
+
+  const NavListElement = ({ onNavigate }: { onNavigate?: () => void }) => (
+    <ul className="mt-6 flex flex-col gap-1 px-3">
+      {navList.map((nav) => (
+        <li key={nav.content}>
+          <a
+            href={nav.href}
+            onClick={onNavigate}
+            className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
+              isActive(nav.href)
+                ? "bg-black/[0.04] text-espresso shadow-glow"
+                : "text-cocoa/70 hover:bg-black/[0.03] hover:text-espresso"
+            }`}
+          >
+            <span
+              className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                isActive(nav.href)
+                  ? "bg-gradient-to-r from-gold to-terracotta"
+                  : "bg-cocoa/30"
+              }`}
+            />
+            {nav.content}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
     <>
-      {/* <!-- Sidenav --> */}
-      <nav
-        id="sidenav-1"
-        className="hidden z-50 sm:block fixed left-0 top-0 z-[1035] h-screen w-56 -translate-x-full overflow-hidden bg-browndark shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-gray-400"
-        data-te-sidenav-init
-        data-te-sidenav-hidden="false"
-        data-te-sidenav-mode="side"
-        data-te-sidenav-content="#content"
-      >
-        <div className="flex items-center justify-center h-20 shadow-md">
-          <h1 className="text-2xl text-gray-700 dark:text-white">Portfolio</h1>
+      {/* Desktop sidebar */}
+      <nav className="fixed left-0 top-0 z-40 hidden h-screen w-64 flex-col border-r border-espresso/10 bg-white/30 backdrop-blur-xl sm:flex">
+        <div className="flex h-20 items-center px-6">
+          <span className="font-display text-xl font-semibold gradient-text">
+            Sorato
+          </span>
         </div>
         <NavListElement />
       </nav>
-      {/* <!-- Sidenav --> */}
 
-      {/* <!-- Toggler --> */}
-      <div className="lg:hidden relative p-5 z-20">
-        <button
-          onClick={handleMenuOpen}
-          type="button"
-          className="fixed top-4 left-4 z-50 space-y-2 p-2"
-        >
-          <div
-            className={
-              openMenu
-                ? "w-7 h-0.5 bg-gray-700 translate-y-2.5 rotate-45 transition duration-500 ease-in-out"
-                : "w-7 h-0.5 bg-gray-700 transition duration-500 ease-in-out"
-            }
-          />
-          <div
-            className={
-              openMenu
-                ? "opacity-0 transition duration-500 ease-in-out"
-                : "w-7 h-0.5 bg-gray-700 transition duration-500 ease-in-out"
-            }
-          />
-          <div
-            className={
-              openMenu
-                ? "w-7 h-0.5 bg-gray-700 -rotate-45 transition duration-500 ease-in-out"
-                : "w-7 h-0.5 bg-gray-700 transition duration-500 ease-in-out"
-            }
-          />
-        </button>
-      </div>
-      {/* Tggle Navigation */}
-      <nav
-        className={
-          openMenu
-            ? "z-10 sm:hidden fixed top-0 left-0 w-[180px] h-full bg-browndark rounded-sm flex flex-col justify-start ease-linear duration-300"
-            : "z-10 sm:hidden fixed top-0 -left-[100%] w-[180px] h-full bg-browndark ease-linear duration-300"
-        }
+      {/* Mobile toggler */}
+      <button
+        onClick={() => setOpenMenu(!openMenu)}
+        type="button"
+        aria-label="Toggle menu"
+        className="fixed left-4 top-4 z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-espresso/10 bg-white/60 backdrop-blur-md sm:hidden"
       >
-        <NavListElement />
+        <span
+          className={`h-0.5 w-5 bg-espresso transition-transform duration-300 ${
+            openMenu ? "translate-y-2 rotate-45" : ""
+          }`}
+        />
+        <span
+          className={`h-0.5 w-5 bg-espresso transition-opacity duration-300 ${
+            openMenu ? "opacity-0" : ""
+          }`}
+        />
+        <span
+          className={`h-0.5 w-5 bg-espresso transition-transform duration-300 ${
+            openMenu ? "-translate-y-2 -rotate-45" : ""
+          }`}
+        />
+      </button>
+
+      {/* Mobile drawer */}
+      <nav
+        className={`fixed left-0 top-0 z-40 h-screen w-64 border-r border-espresso/10 bg-ink/95 backdrop-blur-xl transition-transform duration-300 ease-in-out sm:hidden ${
+          openMenu ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex h-20 items-center justify-end pl-6 pr-6">
+          <span className="font-display text-xl font-semibold gradient-text">
+            Sorato
+          </span>
+        </div>
+        <NavListElement onNavigate={() => setOpenMenu(false)} />
       </nav>
-      {/* <!-- Toggler --> */}
     </>
   );
 }

@@ -1,43 +1,46 @@
 const skillsLogo = [
-  { "path": "python-logo.svg", "width": 18, "height": 16 },
-  { "path": "django-logo.svg", "width": 18, "height": 16 },
-  { "path": "typescript-logo.svg", "width": 18, "height": 16 },
-  { "path": "react-logo.svg", "width": 16, "height": 16 },
-  { "path": "nextjs-logo.svg", "width": 18, "height": 14 },
-  { "path": "github-logo.svg", "width": 16, "height": 16 },
-  { "path": "prisma-logo.svg", "width": 18, "height": 16 },
-  { "path": "mysql-logo.png", "width": 18, "height": 16 },
-  { "path": "zabbix-logo.png", "width": 18, "height": 16 },
-  { "path": "aws-logo.svg", "width": 1, "height": 16 },
-  { "path": "kubernetes-logo.svg", "width": 16, "height": 16 },
-  { "path": "docker-logo.svg", "width": 18, "height": 16 },
-  { "path": "vercel-logo.svg", "width": 18, "height": 16 },
-]
+  { path: "python-logo.svg", name: "Python" },
+  { path: "django-logo.svg", name: "Django" },
+  { path: "typescript-logo.svg", name: "TypeScript" },
+  { path: "react-logo.svg", name: "React" },
+  { path: "nextjs-logo.svg", name: "Next.js" },
+  { path: "github-logo.svg", name: "GitHub" },
+  { path: "prisma-logo.svg", name: "Prisma" },
+  { path: "mysql-logo.png", name: "MySQL" },
+  { path: "zabbix-logo.png", name: "Zabbix" },
+  { path: "aws-logo.svg", name: "AWS" },
+  { path: "kubernetes-logo.svg", name: "Kubernetes" },
+  { path: "docker-logo.svg", name: "Docker" },
+  { path: "vercel-logo.svg", name: "Vercel" },
+];
 
 export default function Skills() {
-
   return (
-    <div id='skills' className="flex justify-center items-center">
-      <div className="block w-full p-6 border border-gray-200 rounded-lg shadow dark:bg-gray-300 dark:border-gray-700 dark:">
-        <h5 className="mb-4 text-2xl lg:text-3xl font-bold tracking-tight text-gray-900">
-          Skills
+    <section id="skills" className="scroll-mt-24">
+      <div className="glass rounded-3xl p-8 sm:p-10">
+        <h5 className="section-title">
+          <span className="gradient-text">Skills</span>
         </h5>
-        < div className="md:mx-10 grid grid-cols-2 gap-4 lg:grid-cols-3" >
-          {skillsLogo.map(logo => {
-            return (
-              <div key={logo.path} className="flex justify-center p-2 border border-gray-200 rounded-lg shadow dark:bg-gray-300 dark:border-gray-700 dark:">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {skillsLogo.map((logo) => (
+            <div
+              key={logo.path}
+              className="group flex flex-col items-center gap-3 rounded-2xl border border-espresso/10 bg-black/[0.03] p-5 transition-all hover:-translate-y-1 hover:border-caramel/40 hover:bg-black/[0.02] hover:shadow-glow"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white p-2 shadow-sm">
                 <img
-                  key={logo.path}
                   src={`/profile/skills/${logo.path}`}
-                  alt="Logo"
-                  // loading="lazy"
-                  className={`w-${logo.width} h-${logo.height}`}
+                  alt={logo.name}
+                  className="h-full w-full object-contain"
                 />
               </div>
-            )
-          })}
+              <span className="text-xs text-cocoa sm:text-sm">
+                {logo.name}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  )
+    </section>
+  );
 }

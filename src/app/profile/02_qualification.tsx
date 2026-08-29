@@ -15,24 +15,27 @@ const qualification = [
 
 export default function Qualification() {
   return (
-    <div id="qualification" className="flex justify-center items-center">
-      <div className="block w-full p-6 border border-gray-200 rounded-lg shadow dark:bg-gray-300 dark:border-gray-700">
-        <h5 className="mb-4 text-2xl lg:text-3xl font-bold tracking-tight text-gray-900">
-          Qualification
+    <section id="qualification" className="scroll-mt-24">
+      <div className="glass rounded-3xl p-8 sm:p-10">
+        <h5 className="section-title">
+          <span className="gradient-text">Qualification</span>
         </h5>
-        <div className="md:mx-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          {qualification.map((item) => {
-            return (
-              <div
-                key={item}
-                className="font-normal text-gray-700 dark:text-gray-600"
-              >
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {qualification.map((item) => (
+            <div
+              key={item}
+              className="flex items-center gap-3 rounded-xl border border-espresso/10 bg-black/[0.03] px-4 py-3 transition-colors hover:border-caramel/40 hover:bg-black/[0.02]"
+            >
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-gold to-terracotta text-xs text-ink">
+                ✓
+              </span>
+              <span className="text-sm text-cocoa sm:text-base">
                 {item}
-              </div>
-            );
-          })}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
